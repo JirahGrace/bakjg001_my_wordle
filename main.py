@@ -76,7 +76,7 @@ while playing == 'y':
 
     correct_letters = ""
     used_letters = ""
-    hat_string = " "
+    hat_list = ["-", "-", "-", "-", "-"]
     dummy_wordle = list(wordle)
 
     print("Wordle is:", wordle)
@@ -95,13 +95,9 @@ while playing == 'y':
     while index < len(guess_1):
         if guess_1[index] == wordle[index]:
             correct_letters = correct_letters + guess_1[index]
-            hat_string = hat_string + "^ "
+            hat_list[index] = "^"
             dummy_wordle[index] = "-"
-        else:
-            hat_string = hat_string + "- "
         index = index + 1
-
-    hat_list = list(hat_string)
 
     index = 0
 
@@ -109,12 +105,12 @@ while playing == 'y':
         if guess_1[index] in dummy_wordle:
             used_letters = used_letters + guess_1[index]
             hat_list[index] = "*"
-            dummy_wordle[index] = "-"
+            wordleIndex = dummy_wordle.index(guess_1[index])
+            dummy_wordle[wordleIndex] = "-"
         index = index + 1
 
     print("".join(hat_list))
     print(hat_list)
-    print(hat_string)
     print(dummy_wordle)
     print(used_letters)
 
